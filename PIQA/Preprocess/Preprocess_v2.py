@@ -74,6 +74,12 @@ class Preprocessor:
                 ans_len = len(answer)
                 total = q_len + ans_len
 
+                if total > 256:
+                    input_line = input_line[:256]
+                    q_len = q_len if q_len < 256 else 256
+                    ans_len = ans_len if ans_len < (256-q_len) else (256-q_len)
+                    total = q_len + ans_len
+
                 self.input_dict[key][ans].append(input_line + [0 for _ in range(256 - len(input_line))])
                 self.input_dict[key][ans + '_att'].append(
                     [1 for _ in range(len(input_line))] + [0 for _ in range(256 - len(input_line))])

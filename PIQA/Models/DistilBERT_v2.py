@@ -3,15 +3,17 @@ import sys
 sys.path.append(".")
 
 import torch
-from transformers import DistilBertTokenizer, BertModel
+from transformers import DistilBertTokenizer, BertModel, BertForPreTraining, DistilBertModel
 
 
 class DownstreamModel(torch.nn.Module):
     def __init__(self, vocab_size=31000, load_path=None):
         super(DownstreamModel, self).__init__()
         self.vocab_size = vocab_size
-        self.distil = BertModel.from_pretrained('bert-base-uncased',
+        self.distil = DistilBertModel.from_pretrained('distilbert-base-uncased',
                                                       return_dict=True)
+
+
 
         if load_path is not None:
             print("Loading model", load_path)

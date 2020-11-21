@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-echo "Setting up data"
+echo "Fetching PIQA Dataset"
 
 wget -P Data/ "https://yonatanbisk.com/piqa/data/train.jsonl"
 wget -P Data/ "https://yonatanbisk.com/piqa/data/train-labels.lst"
