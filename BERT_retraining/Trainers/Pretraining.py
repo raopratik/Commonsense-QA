@@ -100,7 +100,7 @@ class PretrainingTrainer:
                                                                                    masked_lm_positions,
                                                                                    next_sentence_labels)
             batch_loss = mlm_loss + nsp_loss
-            total_loss += batch_loss.cpu().detach().numpy()
+                total_loss += batch_loss.cpu().detach().numpy()
             batch_correct += self.evaluate(masked_outputs=masked_outputs, masked_lm_ids=masked_lm_ids)
             total_correct += (con.BATCH_SIZE * 5)
             index += 1
